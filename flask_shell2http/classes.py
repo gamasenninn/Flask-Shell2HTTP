@@ -140,7 +140,8 @@ class RunnerParser:
 
         except subprocess.TimeoutExpired:
             proc.kill()
-            stdout, _ = [s.decode("utf-8") for s in proc.communicate()]
+#            stdout, _ = [s.decode("utf-8") for s in proc.communicate()]
+            stdout, _ = [s.decode("cp932") for s in proc.communicate()]
             stderr = f"command timedout after {timeout} seconds."
             returncode = proc.returncode
             logger.error(f"Job: '{key}' --> failed. Reason: \"{stderr}\".")
