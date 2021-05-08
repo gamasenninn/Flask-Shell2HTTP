@@ -131,8 +131,10 @@ class RunnerParser:
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,)
         try:
             outs, errs = proc.communicate(timeout=int(timeout))
-            stdout = outs.decode("utf-8")
-            stderr = errs.decode("utf-8")
+            #stdout = outs.decode("utf-8")
+            #stderr = errs.decode("utf-8")
+            stdout = outs.decode("cp932")
+            stderr = errs.decode("cp932")
             returncode = proc.returncode
             logger.info(f"Job: '{key}' --> finished with returncode: '{returncode}'.")
 
